@@ -56,7 +56,12 @@ app.all('/', function(req, res) {
         res.render('index', data)
     }) 
     .catch(error => {
-        res.render('index', {error: 'Problem with getting data, try again'} )
+        console.log(req.body.cityname)
+        if (!req.body.cityname) { 
+            res.render('index', {error: 'You must write a specific name!'} )
+        }  else {
+            res.render('index', {error: 'Problem with getting data, try again'} )
+        } 
     }) 
 })
 
